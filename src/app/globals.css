@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* Theme colors */
+:root {
+  --vr-accent: 228 138 42;
+  --vr-highlight: 243 192 106;
+}
+
+/* Base styling */
+html, body {
+  height: 100%;
+}
+
+body {
+  color: rgb(244 244 245);
+  background: transparent;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(var(--vr-accent), 0.35);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--vr-accent), 0.35);
+  border-radius: 10px;
+}
