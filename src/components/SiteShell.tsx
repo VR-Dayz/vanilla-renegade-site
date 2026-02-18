@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { SERVER } from "@/lib/server";
+
+const SERVER = {
+  name: "Vanilla Renegade",
+  map: "Chernarus",
+  discord: "https://discord.gg/D6JCuHnWTw",
+};
 
 const NavLink = ({ href, label }: { href: string; label: string }) => (
   <Link
@@ -14,11 +19,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
 
-      {/* ===== HEADER ===== */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-black/35 border-b border-white/10">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
 
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <span className="font-semibold tracking-wide">{SERVER.name}</span>
             <span className="text-xs text-zinc-300/70">
@@ -26,7 +29,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <NavLink href="/how-to-join" label="How to Join" />
             <NavLink href="/rules" label="Rules" />
@@ -36,7 +38,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <NavLink href="/leaderboard" label="Leaderboard" />
           </nav>
 
-          {/* Discord Button */}
           <a
             href={SERVER.discord}
             target="_blank"
@@ -45,15 +46,14 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           >
             Discord
           </a>
+
         </div>
       </header>
 
-      {/* ===== PAGE CONTENT ===== */}
       <main className="flex-1">
         {children}
       </main>
 
-      {/* ===== FOOTER ===== */}
       <footer className="border-t border-white/10 bg-black/40">
         <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-zinc-300/80 flex flex-col gap-2">
           <div>
