@@ -1,127 +1,88 @@
-
-
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="rounded-2xl bg-black/40 border border-white/10 p-6">
-      <h2 className="text-2xl font-semibold">{title}</h2>
-      <div className="mt-4 space-y-3 text-zinc-200/85 leading-relaxed">
-        {children}
-      </div>
-    </section>
-  );
-}
-
 export default function RulesPage() {
   return (
-    <SiteShell>
-      <main className="mx-auto max-w-5xl px-4 py-16 space-y-8">
-        <h1 className="text-4xl md:text-5xl font-bold">Server Rules</h1>
-        <p className="text-zinc-300/80">
-          These rules exist to keep the experience fair, immersive, and enjoyable
-          for everyone. Staff decisions are final.
-        </p>
+    <main className="mx-auto max-w-6xl px-4 py-16 space-y-12 text-zinc-100">
 
-        {/* DISCORD */}
-        <Section title="Discord Conduct">
-          <ul className="list-disc pl-6 space-y-2">
-            <li>No family insults or excessive personal abuse.</li>
-            <li>No hate speech, racism, extremist ideology, politics, or religion.</li>
-            <li>Keep language respectful in public channels.</li>
-            <li>No meta gaming or sharing in game locations.</li>
-            <li>Do not post base or stash locations  even your own.</li>
-            <li>Arrange meetups in DMs or voice channels only.</li>
-          </ul>
-        </Section>
+      <h1 className="text-5xl font-bold">Vanilla Renegade Rules</h1>
 
-        {/* GENERAL */}
-        <Section title="General Community Rules">
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Respect staff and other players.</li>
-            <li>No stream sniping.</li>
-            <li>Maximum 6 players online per group.</li>
-            <li>No doxxing or sharing personal information.</li>
-            <li>No server advertising.</li>
-            <li>No cheats, hacks, or unfair software (filters allowed).</li>
-            <li>No exploiting bugs  report them.</li>
-            <li>No alternate accounts without approval.</li>
-          </ul>
-        </Section>
+      {/* Discord Rules */}
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold">Discord Rules</h2>
+        <ul className="list-disc pl-6 space-y-2 text-zinc-300">
+          <li>No family insults, harassment, or hate speech</li>
+          <li>No politics, religion, or extremist ideology discussion</li>
+          <li>No meta gaming or posting in-game activity</li>
+          <li>No base or stash locations</li>
+          <li>No meet-up requests in public channels</li>
+        </ul>
+      </section>
 
-        {/* BASE BUILDING */}
-        <Section title="Base Building">
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Bases must have a flag within 5 days.</li>
-            <li>No coastal bases or restricted zone building.</li>
-            <li>Stay 200m away from military areas.</li>
-            <li>Max 15 locked doors per base (1 garage door).</li>
-            <li>No clipping, overlapping, or unraidable loot rooms.</li>
-            <li>One base per group (one nearby garage allowed).</li>
-            <li>Max two watchtower height.</li>
-            <li>No stacked tents.</li>
-          </ul>
-        </Section>
+      {/* General Rules */}
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold">General Server Rules</h2>
+        <ul className="list-disc pl-6 space-y-2 text-zinc-300">
+          <li>Respect staff and players</li>
+          <li>No racism, harassment, or doxxing</li>
+          <li>No cheating, scripting, or exploiting bugs</li>
+          <li>Group size limit: 6 online players</li>
+          <li>No alt accounts or account sharing</li>
+          <li>Staff decisions are final</li>
+        </ul>
+      </section>
 
-        {/* RAIDING */}
-        <Section title="Raiding">
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Weekend raids only.</li>
-            <li>Gate entry only,  no destroying structures.</li>
-            <li>No base takeovers or recoding.</li>
-            <li>No glitching into bases.</li>
-            <li>No logging out inside bases.</li>
-            <li>No dismantling bases.</li>
-            <li>No destroying or despawning loot.</li>
-            <li>48 hour cooldown after successful raid.</li>
-          </ul>
-        </Section>
+      {/* Base Building */}
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold">Base Building</h2>
+        <ul className="list-disc pl-6 space-y-2 text-zinc-300">
+          <li>1 base per group</li>
+          <li>Maximum 15 locked doors</li>
+          <li>No building in military, police, medical, or coastal zones</li>
+          <li>Flag required within 5 days</li>
+          <li>No clipping, overlapping, or unraidable loot rooms</li>
+        </ul>
+      </section>
 
-        {/* VEHICLES */}
-        <Section title="Vehicles">
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Maximum 2 vehicles per group.</li>
-            <li>Extra vehicles must remain usable for others.</li>
-            <li>No refunds for bugged or lost vehicles.</li>
-            <li>Vehicles are not protected assets.</li>
-          </ul>
-        </Section>
+      {/* Raid Rules */}
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold">Raid Rules</h2>
+        <ul className="list-disc pl-6 space-y-2 text-zinc-300">
+          <li>Weekend raiding only (Fri 16:00 → Sun 23:59 CET)</li>
+          <li>Gate-only raiding</li>
+          <li>No base takeovers</li>
+          <li>No glitching or logging out inside bases</li>
+          <li>48 hour cooldown after successful raid</li>
+        </ul>
+      </section>
 
-        {/* FAIR PLAY */}
-        <Section title="Fair Play">
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Recent VAC bans are not allowed.</li>
-            <li>No ghosting or login advantage abuse.</li>
-            <li>No abusing unintended mechanics.</li>
-            <li>Report suspected cheaters privately.</li>
-          </ul>
-        </Section>
+      {/* Vehicles */}
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold">Vehicles</h2>
+        <ul className="list-disc pl-6 space-y-2 text-zinc-300">
+          <li>Max 2 vehicles per team</li>
+          <li>No refunds for bugged vehicles</li>
+          <li>Vehicles are never protected</li>
+        </ul>
+      </section>
 
-        {/* COMBAT LOGGING */}
-        <Section title="Combat Logging">
-          <ul className="list-disc pl-6 space-y-2">
-            <li>You are in combat after shots fired or during a raid.</li>
-            <li>Wait 5 minutes after last contact before logout.</li>
-            <li>Logging out during raids counts as combat logging.</li>
-          </ul>
-        </Section>
+      {/* Combat Logging */}
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold">Combat Logging</h2>
+        <ul className="list-disc pl-6 space-y-2 text-zinc-300">
+          <li>5 minute timer after last contact</li>
+          <li>Logging during raid = death</li>
+          <li>Ghosting is forbidden</li>
+        </ul>
+      </section>
 
-        {/* SUPPORT */}
-        <Section title="Support & Compensation">
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Admins have final say in disputes.</li>
-            <li>Video evidence required for compensation.</li>
-            <li>No compensation for despawns or dropped items.</li>
-            <li>Do not DM admins  use tickets.</li>
-            <li>Provide evidence immediately when reporting.</li>
-          </ul>
-        </Section>
+      {/* Compensation */}
+      <section className="space-y-4">
+        <h2 className="text-3xl font-semibold">Compensation & Support</h2>
+        <ul className="list-disc pl-6 space-y-2 text-zinc-300">
+          <li>Video proof required</li>
+          <li>No proof = no support</li>
+          <li>No compensation for despawns, restarts, or dropped loot</li>
+        </ul>
+      </section>
 
-      </main>
-    </SiteShell>
+    </main>
   );
 }
