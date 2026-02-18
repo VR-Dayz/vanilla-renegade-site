@@ -2,7 +2,7 @@
 export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
-
+import { SiteShell } from "@/components/siteshell";
 
 type Player = {
   name: string;
@@ -29,34 +29,42 @@ export default function LeaderboardPage() {
   }, []);
 
   return (
-    <main style={{ padding: "40px", textAlign: "center" }}>
-      <h1>Vanilla Renegade Leaderboard</h1>
+    <SiteShell>
+      <main style={{ padding: "40px", textAlign: "center" }}>
+        <h1>Vanilla Renegade Leaderboard</h1>
 
-      <table style={{ margin: "auto", width: "80%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Player</th>
-            <th>Kills</th>
-            <th>Deaths</th>
-            <th>K/D</th>
-          </tr>
-        </thead>
-        <tbody>
-          {players.map((p, i) => {
-            const kd = (p.kills / Math.max(1, p.deaths)).toFixed(2);
-            return (
-              <tr key={i}>
-                <td>{i + 1}</td>
-                <td>{p.name}</td>
-                <td>{p.kills}</td>
-                <td>{p.deaths}</td>
-                <td>{kd}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </main>
+        <table
+          style={{
+            margin: "auto",
+            width: "80%",
+            borderCollapse: "collapse",
+          }}
+        >
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player</th>
+              <th>Kills</th>
+              <th>Deaths</th>
+              <th>K/D</th>
+            </tr>
+          </thead>
+          <tbody>
+            {players.map((p, i) => {
+              const kd = (p.kills / Math.max(1, p.deaths)).toFixed(2);
+              return (
+                <tr key={i}>
+                  <td>{i + 1}</td>
+                  <td>{p.name}</td>
+                  <td>{p.kills}</td>
+                  <td>{p.deaths}</td>
+                  <td>{kd}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </main>
+    </SiteShell>
   );
 }
