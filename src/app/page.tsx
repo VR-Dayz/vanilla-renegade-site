@@ -4,8 +4,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <SiteShell>
-      <main className="relative min-h-[140vh] text-zinc-100">
+    <main className="relative min-h-[140vh] text-zinc-100">
 
       {/* Background image */}
       <div className="absolute inset-0 -z-10">
@@ -26,7 +25,7 @@ export default function Home() {
         </h1>
 
         <p className="mt-6 text-lg md:text-xl text-zinc-200/90">
-         How official should feel. Sensible tweaks only
+          How official should feel. Sensible tweaks only
         </p>
 
         <div className="mt-10 flex justify-center gap-4 flex-wrap">
@@ -56,25 +55,10 @@ export default function Home() {
         <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
           <h2 className="text-xl font-semibold">About</h2>
           <p className="mt-3 text-zinc-300">
-            A community-driven server focused on the vanilla DayZ feel, enhanced only by small convenience mods  not shortcuts.
+            A community-driven server focused on the vanilla DayZ feel, enhanced only by small convenience mods not shortcuts.
           </p>
         </div>
 
         <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
           <h2 className="text-xl font-semibold">Server</h2>
           <p className="mt-3 text-zinc-300">
-            PC • Chernarus • Vanilla • Lightly Modded                         
-          </p>
-        </div>
-
-        <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-          <h2 className="text-xl font-semibold">Community</h2>
-          <p className="mt-3 text-zinc-300">
-            Active admins, fair rules, no pay to win.
-          </p>
-        </div>
-      </section>
-          </main>
-    </SiteShell>
-  );
-}
