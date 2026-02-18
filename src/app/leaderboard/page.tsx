@@ -43,7 +43,8 @@ export default function LeaderboardPage() {
 
         <tbody>
           {players.map((p, i) => {
-            const kd = (p.kills / Math.max(1, p.deaths)).toFixed(2);
+         const kd = p.deaths === 0 ? p.kills.toFixed(2) : (p.kills / p.deaths).toFixed(2);
+
 
             return (
               <tr key={i}>
