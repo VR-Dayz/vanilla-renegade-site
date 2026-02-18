@@ -1,9 +1,7 @@
-"use client";
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SiteShell } from "../components/siteshell";
 import "./globals.css";
+import SiteShellWrapper from "./siteshell-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,30 +25,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-zinc-100`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-zinc-100`}>
+
         {/* Global Background */}
         <div className="fixed inset-0 -z-10">
-
-          {/* Background Image */}
           <div
             className="absolute inset-0 bg-center bg-cover opacity-80"
             style={{ backgroundImage: "url(/vr_loadingscreen.png)" }}
           />
-
-          {/* Cinematic gradient shading */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/75" />
-
-          {/* Slight color & contrast boost */}
           <div className="absolute inset-0 backdrop-saturate-125 backdrop-contrast-110" />
-
         </div>
 
-        {/* Global Site Layout (Navbar + Footer) */}
-        <SiteShell>
+        <SiteShellWrapper>
           {children}
-        </SiteShell>
+        </SiteShellWrapper>
 
       </body>
     </html>
