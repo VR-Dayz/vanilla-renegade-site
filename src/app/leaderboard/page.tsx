@@ -1,6 +1,4 @@
-"use client";
-export const revalidate = 60;
-import { useEffect, useState } from "react";
+export const revalidate = 60; // cache 60 seconds
 
 type Player = {
   name: string;
@@ -8,23 +6,20 @@ type Player = {
   deaths: number;
 };
 
-export default function LeaderboardPage() {
-  const [players, setPlayers] = useState<Player[]>([]);
+async function getLeaderboard(): Promise<Player[]> {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/leaderboard`, {
+    next: { revalidate: 60 },
+  });
 
-  async function loadLeaderboard() {
-    const res = await fetch("/mock-leaderboard.json");
-    const data = await res.json();
+  const data = await res.json();
 
-    const sorted = data.result.entries.sort(
-      (a: Player, b: Player) => b.kills - a.kills
-    );
+  return data.result.entries.sort(
+    (a: Player, b: Player) => b.kills - a.kills
+  );
+}
 
-    setPlayers(sorted);
-  }
-
-  useEffect(() => {
-    loadLeaderboard();
-  }, []);
+export default async function LeaderboardPage() {
+  const players = await getLeaderboard();
 
   return (
     <main style={{ padding: "40px", textAlign: "center" }}>
@@ -43,8 +38,7 @@ export default function LeaderboardPage() {
 
         <tbody>
           {players.map((p, i) => {
-         const kd = p.deaths === 0 ? p.kills.toFixed(2) : (p.kills / p.deaths).toFixed(2);
-
+            const kd = (p.kills / Math.max(1, p.deaths)).toFixed(2);
 
             return (
               <tr key={i}>
