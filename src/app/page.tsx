@@ -62,3 +62,18 @@ export default function Home() {
         <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
           <h2 className="text-xl font-semibold">Server</h2>
           <p className="mt-3 text-zinc-300">
+            PC • Chernarus • Vanilla • Lightly Modded
+          </p>
+        </div>
+
+        <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
+          <h2 className="text-xl font-semibold">Community</h2>
+          <p className="mt-3 text-zinc-300">
+            Active admins, fair rules, no pay to win.
+          </p>
+        </div>
+      </section>
+
+    </main>
+  );
+}
