@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SiteShell } from "@/components/siteshell";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,7 +37,7 @@ export default function RootLayout({
             style={{ backgroundImage: "url(/vr_loadingscreen.png)" }}
           />
 
-          {/* Cinematic gradient shading (instead of flat darkness) */}
+          {/* Cinematic gradient shading */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/75" />
 
           {/* Slight color & contrast boost */}
@@ -44,7 +45,11 @@ export default function RootLayout({
 
         </div>
 
-        {children}
+        {/* Global Site Layout (Navbar + Footer) */}
+        <SiteShell>
+          {children}
+        </SiteShell>
+
       </body>
     </html>
   );
