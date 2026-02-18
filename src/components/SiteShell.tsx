@@ -28,6 +28,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <NavLink href="/server-info" label="Server Info" />
             <NavLink href="/donate" label="Donate" />
             <NavLink href="/store" label="Store" />
+            <NavLink href="/leaderboard" label="Leaderboard" />
           </nav>
 
           <a
@@ -46,6 +47,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           <NavLink href="/server-info" label="Server Info" />
           <NavLink href="/donate" label="Donate" />
           <NavLink href="/store" label="Store" />
+          <NavLink href="/leaderboard" label="Leaderboard" />
         </div>
       </header>
 
