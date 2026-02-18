@@ -1,5 +1,5 @@
 "use client";
-import { SiteShell } from "@/components/SiteShell";
+
 import Image from "next/image";
 
 export default function Home() {
