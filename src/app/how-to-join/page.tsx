@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 
 const SERVER_IP = "37.156.35.85:2302";
