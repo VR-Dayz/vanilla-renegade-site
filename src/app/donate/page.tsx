@@ -4,19 +4,19 @@ export default function Donate() {
       <h1 className="text-4xl font-bold">Support Vanilla Renegade</h1>
 
       <p className="mt-6 text-zinc-300">
-        Operating a DayZ server requires ongoing hosting, maintenance, and development work.
-        If you enjoy your time on Vanilla Renegade and would like to help keep the world alive,
-        you can support the server through an optional donation.
+        Running the Vanilla Renegade DayZ server requires continuous hosting,
+        maintenance, and development work. If you enjoy playing here and would
+        like to support the server, you can do so using the options below.
       </p>
 
       <p className="mt-4 text-zinc-300">
-        Every contribution helps us maintain performance, improve stability, and continue
-        expanding the experience for the community. Your support directly contributes to the
-        longevity of the server and future improvements.
+        Contributions help maintain stability, improve performance, and fund
+        future improvements while keeping the experience fair for everyone.
+        Support is completely optional and always appreciated.
       </p>
 
       <p className="mt-4 text-zinc-300">
-        Thank you for being part of the community, we genuinely appreciate it.
+        Thank you for being part of the community and helping keep the server online.
       </p>
 
       {/* Donation Options */}
@@ -26,7 +26,7 @@ export default function Donate() {
         <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
           <h2 className="text-xl font-semibold">Buy Me a Coffee</h2>
           <p className="mt-2 text-zinc-300">
-            A quick and simple way to show support. Ideal for small contributions.
+            A quick and simple way to support the server with a small contribution.
           </p>
 
           <a
@@ -43,7 +43,7 @@ export default function Donate() {
         <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
           <h2 className="text-xl font-semibold">PayPal</h2>
           <p className="mt-2 text-zinc-300">
-            Supports PayPal balance, credit cards, and other available payment methods.
+            Supports PayPal balance, debit, and credit card payments.
           </p>
 
           <a
@@ -58,12 +58,12 @@ export default function Donate() {
 
       </div>
 
-      {/* Fairness Notice */}
+      {/* Fair Play Policy */}
       <div className="mt-12 bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
         <h2 className="text-xl font-semibold">Fair Play Policy</h2>
         <p className="mt-2 text-zinc-300">
-          Donations never provide gameplay advantages. Vanilla Renegade is committed to a fair,
-          balanced experience for all players. Contributions are voluntary and purely supportive.
+          Vanilla Renegade will never be pay-to-win. Donations provide no gameplay
+          advantages and do not affect progression, equipment, or player power.
         </p>
       </div>
 
@@ -71,8 +71,8 @@ export default function Donate() {
       <div className="mt-12 text-sm text-zinc-400">
         <p>
           Vanilla Renegade is not affiliated with or endorsed by Bohemia Interactive.
-          This server operates under the Bohemia Interactive Monetization Rules.
-          All donations are optional and do not grant gameplay advantages or pay-to-win benefits.
+          This server follows the Bohemia Interactive Monetization Rules.
+          All payments are voluntary support contributions and grant no in-game advantage.
         </p>
       </div>
     </main>
