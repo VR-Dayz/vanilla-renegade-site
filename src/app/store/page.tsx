@@ -1,7 +1,7 @@
 export default function Store() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-16 text-zinc-100">
-      <h1 className="text-4xl font-bold">Server Store</h1>
+      <h1 className="text-4xl font-bold text-orange-400">Server Store</h1>
 
       <p className="mt-6 text-zinc-300 max-w-3xl">
         Support Vanilla Renegade while receiving optional cosmetic perks and queue priority.
@@ -48,7 +48,7 @@ export default function Store() {
 
       {/* Extras */}
       <div className="mt-14">
-        <h2 className="text-2xl font-semibold">Extras</h2>
+        <h2 className="text-2xl font-semibold text-orange-400">Extras</h2>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
 
@@ -73,7 +73,7 @@ export default function Store() {
 
       {/* Payments */}
       <div className="mt-14">
-        <h2 className="text-2xl font-semibold">Purchase / Payment</h2>
+        <h2 className="text-2xl font-semibold text-orange-400">Purchase / Payment</h2>
         <p className="mt-3 text-zinc-300">
           We accept PayPal, credit cards, and other supported payment methods.
         </p>
@@ -101,14 +101,31 @@ export default function Store() {
         </div>
       </div>
 
-      {/* Compliance */}
-      <div className="mt-16 text-sm text-zinc-400 max-w-3xl">
+      {/* Monetisation Disclaimer */}
+      <div className="mt-16 text-sm text-zinc-400 max-w-3xl space-y-4">
+        <h3 className="text-lg font-semibold text-orange-400">Monetisation Disclaimer</h3>
+
         <p>
-          Vanilla Renegade is not affiliated with or endorsed by Bohemia Interactive.
-          All items are cosmetic or convenience based only and provide no gameplay advantage.
-          Purchases are voluntary contributions supporting server operation and maintenance.
+          Vanilla Renegade participates in community monetisation under the Bohemia Interactive server monetisation guidelines.
+        </p>
+
+        <p>
+          Any supporter packages, priority access, or cosmetic rewards are optional and exist only to help cover the running costs of the server, including hosting, maintenance, and development. They do not provide competitive gameplay advantages and will never impact fairness, progression, or combat balance.
+        </p>
+
+        <p>
+          All players have equal access to gameplay features regardless of financial contribution. Purchasing a package does not grant administrative power, special protection, or influence over moderation decisions.
+        </p>
+
+        <p>
+          Vanilla Renegade is a community-run server and is not affiliated with, endorsed by, or sponsored by Bohemia Interactive.
+        </p>
+
+        <p>
+          By supporting the server, you are helping maintain the world and community, not purchasing power within it.
         </p>
       </div>
+
     </main>
   );
 }
