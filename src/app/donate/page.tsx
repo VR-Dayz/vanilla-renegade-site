@@ -1,7 +1,7 @@
 export default function Donate() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-16 text-zinc-100">
-      <h1 className="text-4xl font-bold">Support Vanilla Renegade</h1>
+      <h1 className="text-4xl font-bold text-orange-400">Support Vanilla Renegade</h1>
 
       <p className="mt-6 text-zinc-300">
         Running the Vanilla Renegade DayZ server requires continuous hosting,
@@ -24,7 +24,7 @@ export default function Donate() {
 
         {/* Buy Me a Coffee */}
         <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-          <h2 className="text-xl font-semibold">Buy Me a Coffee</h2>
+          <h2 className="text-xl font-semibold text-orange-400">Buy Me a Coffee</h2>
           <p className="mt-2 text-zinc-300">
             A quick and simple way to support the server with a small contribution.
           </p>
@@ -41,7 +41,7 @@ export default function Donate() {
 
         {/* PayPal */}
         <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-          <h2 className="text-xl font-semibold">PayPal</h2>
+          <h2 className="text-xl font-semibold text-orange-400">PayPal</h2>
           <p className="mt-2 text-zinc-300">
             Supports PayPal balance, debit, and credit card payments.
           </p>
@@ -59,11 +59,31 @@ export default function Donate() {
       </div>
 
       {/* Fair Play Policy */}
-      <div className="mt-12 bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-        <h2 className="text-xl font-semibold">Fair Play Policy</h2>
-        <p className="mt-2 text-zinc-300">
-          Vanilla Renegade will never be pay-to-win. Donations provide no gameplay
-          advantages and do not affect progression, equipment, or player power.
+      <div className="mt-12 bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl space-y-4">
+        <h2 className="text-xl font-semibold text-orange-400">Fair Play Policy</h2>
+
+        <p className="text-zinc-300">
+          Vanilla Renegade is committed to maintaining a fair and balanced gameplay environment for every player. Financial support for the server is entirely optional and will never influence gameplay outcomes, player progression, or combat encounters.
+        </p>
+
+        <p className="text-zinc-300">
+          Donations and supporter packages exist solely to help cover operational costs such as hosting, maintenance, and development. Any rewards offered are cosmetic or convenience based and are carefully designed to avoid providing competitive advantages.
+        </p>
+
+        <p className="text-zinc-300">
+          No player may obtain better weapons, equipment, protection, administrative favour, or in-game influence through payment. Moderation decisions are made independently of financial contribution, and supporters are treated the same as all other players under the rules of the server.
+        </p>
+
+        <p className="text-zinc-300">
+          Administrative staff do not spawn items, intervene in combat situations, or provide assistance based on supporter status. Fairness and consistency are prioritised over all other considerations.
+        </p>
+
+        <p className="text-zinc-300">
+          Vanilla Renegade follows the Bohemia Interactive server monetisation guidelines and aims to preserve an experience where skill, decision making, and player interaction determine outcomes, not financial contribution.
+        </p>
+
+        <p className="text-zinc-300">
+          By supporting the server, you are helping maintain the community and its world, not purchasing power within it.
         </p>
       </div>
 
