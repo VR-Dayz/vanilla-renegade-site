@@ -1,4 +1,3 @@
-Perfect.. please create the below exactly into a TSX file for the vanilla website, server info page
 Vanilla Renegade
 1PP Only
 Max Group Size: 6
