@@ -31,7 +31,10 @@ export default function Page() {
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-2 text-zinc-200 text-base max-w-2xl mx-auto">
           {features.map((f, i) => (
-            <li key={i} className="before:content-['•'] before:text-orange-400 before:mr-2">
+            <li
+              key={i}
+              className={`before:content-['•'] before:text-orange-400 before:mr-2 ${f === "Active & Friendly Admins" ? "md:col-span-3 text-center mx-auto" : ""}`}
+            >
               {f}
             </li>
           ))}
