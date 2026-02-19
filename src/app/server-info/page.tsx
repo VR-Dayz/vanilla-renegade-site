@@ -27,7 +27,7 @@ export default function Page() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-12 space-y-14">
       <header className="space-y-6">
-        <h1 className="text-4xl font-bold">Vanilla Renegade</h1>
+        <h1 className="text-4xl font-bold text-orange-400">Vanilla Renegade</h1>
         <ul className="list-disc pl-6 space-y-1 text-lg">
           {features.map((f, i) => (
             <li key={i}>{f}</li>
