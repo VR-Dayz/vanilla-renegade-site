@@ -15,7 +15,9 @@ export default function Home() {
             Welcome to Vanilla Renegade
           </h1>
 
-          <div className="w-24 h-[2px] bg-orange-400/60 mx-auto mt-4"></div>
+          <p className="text-lg md:text-xl text-zinc-300 tracking-wide">
+            Survive your own way.
+          </p>
         </div>
 
       </section>
