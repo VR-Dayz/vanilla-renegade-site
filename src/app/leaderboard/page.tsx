@@ -15,27 +15,38 @@ export default function Leaderboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/leaderboard")
-      .then(res => res.json())
-      .then(data => {
-        if (!data?.result?.entries) return;
+    async function loadLeaderboard() {
+      try {
+        const res = await fetch("/api/leaderboard");
+        const json = await res.json();
 
-        const sorted = data.result.entries
+        const entries = json?.result?.entries || [];
+
+        const mapped = entries
           .map((p: any) => ({
-            name: p.name,
-            kills: p.kills,
-            deaths: p.deaths,
-            kd: (p.deaths === 0 ? p.kills : (p.kills / p.deaths)).toFixed(2)
+            name: p.name ?? "Unknown",
+            kills: Number(p.kills ?? 0),
+            deaths: Number(p.deaths ?? 0),
+            kd:
+              Number(p.deaths) === 0
+                ? Number(p.kills).toFixed(2)
+                : (Number(p.kills) / Number(p.deaths)).toFixed(2),
           }))
           .sort((a: any, b: any) => b.kills - a.kills)
           .map((p: any, index: number) => ({
             rank: index + 1,
-            ...p
+            ...p,
           }));
 
-        setPlayers(sorted);
+        setPlayers(mapped);
+      } catch (err) {
+        console.error("Leaderboard load failed:", err);
+      } finally {
         setLoading(false);
-      });
+      }
+    }
+
+    loadLeaderboard();
   }, []);
 
   return (
@@ -57,25 +68,42 @@ export default function Leaderboard() {
           </thead>
 
           <tbody>
-            {loading ? (
+            {loading && (
               <tr>
                 <td colSpan={5} className="p-6 text-center text-zinc-400">
                   Loading leaderboard...
                 </td>
               </tr>
-            ) : (
+            )}
+
+            {!loading && players.length === 0 && (
+              <tr>
+                <td colSpan={5} className="p-6 text-center text-zinc-500">
+                  No player statistics available yet.
+                </td>
+              </tr>
+            )}
+
+            {!loading &&
               players.map((p) => (
-                <tr key={p.rank} className="border-t border-orange-500/10 hover:bg-white/5">
+                <tr
+                  key={p.rank}
+                  className="border-t border-orange-500/10 hover:bg-white/5 transition"
+                >
                   <td className="p-4 font-semibold text-orange-300">#{p.rank}</td>
                   <td className="p-4">{p.name}</td>
                   <td className="p-4">{p.kills}</td>
                   <td className="p-4">{p.deaths}</td>
                   <td className="p-4">{p.kd}</td>
                 </tr>
-              ))
-            )}
+              ))}
           </tbody>
         </table>
       </div>
-    </main>
 
+      <p className="text-sm text-zinc-500 mt-4">
+        Statistics update periodically.
+      </p>
+    </main>
+  );
+}
