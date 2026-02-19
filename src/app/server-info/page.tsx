@@ -1,40 +1,44 @@
-export default function ServerInfo() {
-  return (
-    <main className="mx-auto max-w-4xl px-4 py-16 text-zinc-100 space-y-6">
-      <h1 className="text-4xl font-bold">Server Information</h1>
+Perfect.. please create the below exactly into a TSX file for the vanilla website, server info page
+Vanilla Renegade
+1PP Only
+Max Group Size: 6
+Restarts Every 4 Hours
+Weekend Only Raiding
+Regular Events
+Convenience Mods
+Active & Friendly Admins
 
-      <section className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-        <h2 className="text-xl font-semibold">Connection</h2>
-        <p className="mt-2 text-zinc-300">
-          IP: <span className="font-mono text-orange-400">37.156.35.85:2302</span>
-        </p>
-        <p className="mt-1 text-zinc-300">Platform: PC</p>
-        <p className="mt-1 text-zinc-300">Map: Chernarus</p>
-      </section>
+Our Approach
 
-      <section className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-        <h2 className="text-xl font-semibold">Server Style</h2>
-        <ul className="list-disc pl-6 mt-2 text-zinc-300 space-y-1">
-          <li>Vanilla experience</li>
-          <li>Light quality-of-life mods</li>
-          <li>No pay-to-win features</li>
-          <li>Active administration</li>
-        </ul>
-      </section>
+Vanilla Renegade exists for players who still enjoy DayZ for what originally made it special. Survival first. Player interaction second. Everything else comes after.
 
-      <section className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-        <h2 className="text-xl font-semibold">Community</h2>
-        <p className="mt-2 text-zinc-300">
-          Join the Discord for announcements, support and events.
-        </p>
-        <a
-          href="https://discord.gg/D6JCuHnWTw"
-          target="_blank"
-          className="inline-block mt-3 rounded-full bg-orange-500 hover:bg-orange-400 text-black px-5 py-2 font-semibold transition"
-        >
-          Join Discord
-        </a>
-      </section>
-    </main>
-  );
-}
+We keep the game close to its core experience. Loot is adjusted but not excessive, quality-of-life mods are present but restrained, and progression still matters. You should feel tension when travelling, value your gear, and think twice before engaging another survivor.
+
+We are not trying to reinvent DayZ.
+We are trying to preserve it — while giving players a reason to keep coming back.
+
+Regular server events add variety without turning the server into an arcade. The goal is to create memorable moments, not constant chaos.
+
+Fair Gameplay
+
+Moderation is active and visible.
+We aim for a clean environment where fights are decided by decisions and skill, not exploits.
+
+Cheating and rule breaking are dealt with quickly.
+We also keep a strict stance against admin or owner abuse. No spawning gear for friends, no hidden advantages, and no interfering with legitimate gameplay.
+
+If we wouldn’t want it happening to us as players, it won’t happen here.
+
+Our Story
+
+We are two long-time DayZ players who met through the game and ended up becoming good friends. Over the years we spent a lot of time on official servers dealing with cheaters, and on community servers dealing with biased admins or outright owner abuse.
+
+Eventually we realised the experience we were looking for didn’t really exist anymore.
+
+So we decided to build it ourselves.
+
+Vanilla Renegade is the server we always wanted to play on:
+fair, grounded, social, and survival focused. A place where the same players keep returning because they enjoy the atmosphere as much as the gameplay.
+
+We are not trying to be the biggest server.
+We want a consistent community of players who appreciate DayZ in the same way we do.
