@@ -19,8 +19,9 @@ export default function Page() {
     "Weekend Only Raiding",
     "Regular Events",
     "Convenience Mods",
-    "Active & Friendly Admins",
   ];
+
+  const highlight = "Active & Friendly Admins";
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-20 space-y-16 text-white">
@@ -31,14 +32,17 @@ export default function Page() {
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-2 text-zinc-200 text-base max-w-2xl mx-auto">
           {features.map((f, i) => (
-            <li
-              key={i}
-              className={`before:content-['•'] before:text-orange-400 before:mr-2 ${f === "Active & Friendly Admins" ? "md:col-span-3 text-center mx-auto" : ""}`}
-            >
+            <li key={i} className="before:content-['•'] before:text-orange-400 before:mr-2">
               {f}
             </li>
           ))}
         </ul>
+
+        <div className="pt-2 text-center">
+          <span className="inline-block rounded-md border border-orange-400/40 bg-black/40 px-4 py-2 text-orange-300 font-medium tracking-wide">
+            • {highlight}
+          </span>
+        </div>
       </header>
 
       <Panel title="Our Approach">
