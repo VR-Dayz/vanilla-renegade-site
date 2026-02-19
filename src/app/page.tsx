@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 export default function Home() {
   return (
     <main className="text-white">
@@ -9,16 +7,13 @@ export default function Home() {
       {/* HERO */}
       <section className="text-center py-32 px-6 max-w-4xl mx-auto space-y-6">
         <h1 className="text-5xl md:text-6xl font-bold text-orange-400">
-          Vanilla Renegade
+          Welcome to Vanilla Renegade
         </h1>
       </section>
 
 
       {/* WELCOME */}
       <section className="max-w-4xl mx-auto px-6 py-16 space-y-6 text-center">
-        <h2 className="text-2xl font-semibold text-orange-400">
-          Welcome to Vanilla Renegade
-        </h2>
 
         <div className="space-y-5 text-zinc-300 leading-relaxed">
           <p>
@@ -41,13 +36,10 @@ export default function Home() {
             Whether you are new to DayZ or have thousands of hours, you are welcome here.
             Find your path, live with the consequences, and make the story your own.
           </p>
-
-          <p className="text-orange-400 font-medium">
-            Welcome to Vanilla Renegade.
-          </p>
         </div>
       </section>
 
     </main>
   );
 }
+
