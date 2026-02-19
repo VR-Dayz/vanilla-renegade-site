@@ -5,15 +5,24 @@ export default function Home() {
     <main className="text-white">
 
       {/* HERO */}
-      <section className="text-center py-32 px-6 max-w-4xl mx-auto space-y-6">
-        <h1 className="text-5xl md:text-6xl font-bold text-orange-400">
-          Welcome to Vanilla Renegade
-        </h1>
+      <section className="relative py-40 px-6">
+
+        {/* dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/20" />
+
+        <div className="relative max-w-4xl mx-auto text-center space-y-6">
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-wide text-orange-300 drop-shadow-lg">
+            Welcome to Vanilla Renegade
+          </h1>
+
+          <div className="w-24 h-[2px] bg-orange-400/60 mx-auto mt-4"></div>
+        </div>
+
       </section>
 
 
-      {/* WELCOME */}
-      <section className="max-w-4xl mx-auto px-6 py-16 space-y-6 text-center">
+      {/* WELCOME CONTENT */}
+      <section className="max-w-4xl mx-auto px-6 py-24 space-y-6 text-center">
 
         <div className="space-y-5 text-zinc-300 leading-relaxed">
           <p>
@@ -37,9 +46,9 @@ export default function Home() {
             Find your path, live with the consequences, and make the story your own.
           </p>
         </div>
+
       </section>
 
     </main>
   );
 }
-
