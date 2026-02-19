@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SiteShell } from "../components/SiteShell";
 import "./globals.css";
-import SiteShellWrapper from "./siteshell-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,21 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-zinc-100`}>
-
-        {/* Global Background */}
-        <div className="fixed inset-0 -z-10">
-          <div
-            className="absolute inset-0 bg-center bg-cover opacity-80"
-            style={{ backgroundImage: "url(/vr_loadingscreen.png)" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/75" />
-          <div className="absolute inset-0 backdrop-saturate-125 backdrop-contrast-110" />
-        </div>
-
-        <SiteShellWrapper>
+        <SiteShell>
           {children}
-        </SiteShellWrapper>
-
+        </SiteShell>
       </body>
     </html>
   );
