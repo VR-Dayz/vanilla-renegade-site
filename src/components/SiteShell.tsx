@@ -30,9 +30,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
+            <NavLink href="/server-info" label="Server Info" />
             <NavLink href="/how-to-join" label="How to Join" />
             <NavLink href="/rules" label="Rules" />
-            <NavLink href="/server-info" label="Server Info" />
             <NavLink href="/donate" label="Donate" />
             <NavLink href="/store" label="Store" />
             <NavLink href="/leaderboard" label="Leaderboard" />
