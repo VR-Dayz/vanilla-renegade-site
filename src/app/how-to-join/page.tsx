@@ -1,28 +1,60 @@
+import React, { useState } from "react";
+
+const SERVER_IP = "37.156.35.85:2302";
+
+/* ---------------- Copy IP Component ---------------- */
+function CopyIP() {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(SERVER_IP);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      setCopied(false);
+    }
+  };
+
+  return (
+    <button
+      onClick={copy}
+      className="mt-3 w-fit font-mono text-orange-400 text-lg bg-black/50 border border-orange-500/30 rounded-lg px-4 py-2 hover:border-orange-400 hover:text-orange-300 transition"
+    >
+      {copied ? "Copied!" : SERVER_IP}
+    </button>
+  );
+}
+
+/* ---------------- Page ---------------- */
+
 export default function Join() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-16 text-white">
-      <h1 className="text-3xl font-bold mb-10 text-center">
+      <h1 className="text-3xl font-bold mb-10 text-center text-orange-400">
         How to Join the Server
       </h1>
 
-      <div className="mt-8 space-y-6">
+      <div className="space-y-8">
 
         {/* Server Info */}
-        <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-          <h2 className="text-xl font-semibold">Server Address</h2>
+        <section className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
+          <h2 className="text-xl font-semibold text-orange-400">
+            Server Address
+          </h2>
           <p className="mt-2 text-zinc-300">
-            Use this IP in either launcher to connect:
+            Click the IP below to copy it to your clipboard:
           </p>
-          <p className="mt-3 font-mono text-orange-400 text-lg">
-            37.156.35.85:2302
-          </p>
-        </div>
+          <CopyIP />
+        </section>
 
         {/* Steam Method */}
-        <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-          <h2 className="text-xl font-semibold">Join Using Steam Launcher</h2>
+        <section className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
+          <h2 className="text-xl font-semibold text-orange-400">
+            Join Using Steam Launcher
+          </h2>
 
-          <ol className="mt-3 space-y-2 text-zinc-300 list-decimal list-inside">
+          <ol className="mt-4 space-y-2 text-zinc-300 list-decimal list-inside">
             <li>Open Steam</li>
             <li>Go to Library</li>
             <li>Launch DayZ (this opens the official launcher)</li>
@@ -31,19 +63,16 @@ export default function Join() {
             <li>Enter the server IP</li>
             <li>Press Join</li>
             <li>Allow mods to download</li>
+            <li>Favorite the server</li>
             <li>Press Play when ready</li>
           </ol>
 
-          <div className="mt-4 p-3 rounded-lg bg-black/50 border border-orange-500/30">
-            <p className="font-mono text-orange-400">
-              37.156.35.85:2302
-            </p>
-          </div>
-        </div>
+          <CopyIP />
+        </section>
 
         {/* DZSA Method */}
-        <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
-          <h2 className="text-xl font-semibold">
+        <section className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl">
+          <h2 className="text-xl font-semibold text-orange-400">
             Join Using DZSA Launcher (Recommended)
           </h2>
 
@@ -51,7 +80,9 @@ export default function Join() {
             DZSA automatically installs and loads all required mods and is the easiest way to connect.
           </p>
 
-          <h3 className="mt-5 font-semibold">Download DZSA Launcher</h3>
+          <h3 className="mt-6 font-semibold text-orange-400">
+            Download DZSA Launcher
+          </h3>
 
           <a
             href="https://dayzsalauncher.com"
@@ -62,7 +93,9 @@ export default function Join() {
             Download DZSA Launcher
           </a>
 
-          <h3 className="mt-6 font-semibold">Connect to the Server</h3>
+          <h3 className="mt-6 font-semibold text-orange-400">
+            Connect to the Server
+          </h3>
 
           <ol className="mt-3 space-y-2 text-zinc-300 list-decimal list-inside">
             <li>Open DZSA Launcher</li>
@@ -70,34 +103,15 @@ export default function Join() {
             <li>Select the server</li>
             <li>Click Join</li>
             <li>Wait for mods to download</li>
+            <li>Favorite the server</li>
             <li>The game will launch and connect automatically</li>
           </ol>
 
-          <div className="mt-4 p-3 rounded-lg bg-black/50 border border-orange-500/30">
-            <p className="font-mono text-orange-400">
-              37.156.35.85:2302
-            </p>
-          </div>
-        </div>
-
-        {/* Discord */}
-        <div className="bg-black/40 border border-orange-500/20 backdrop-blur-md p-6 rounded-2xl text-center">
-          <h2 className="text-xl font-semibold">Join the Community</h2>
-          <p className="mt-2 text-zinc-300">
-            Announcements, support, rules and events are posted in Discord.
-          </p>
-
-          <a
-            href="https://discord.gg/D6JCuHnWTw"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-4 rounded-full bg-orange-500 hover:bg-orange-400 text-black px-6 py-3 font-semibold transition"
-          >
-            Join Discord
-          </a>
-        </div>
+          <CopyIP />
+        </section>
 
       </div>
     </main>
   );
 }
+
