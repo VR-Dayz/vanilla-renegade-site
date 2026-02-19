@@ -26,9 +26,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-zinc-100`}>
+
+        {/* GLOBAL BACKGROUND */}
+        <div className="fixed inset-0 -z-10">
+
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-center bg-cover opacity-80"
+            style={{ backgroundImage: "url(/vr_loadingscreen.png)" }}
+          />
+
+          {/* Cinematic shading */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/90" />
+
+          {/* Color grading */}
+          <div className="absolute inset-0 backdrop-saturate-125 backdrop-contrast-110" />
+        </div>
+
+        {/* SITE LAYOUT */}
         <SiteShell>
           {children}
         </SiteShell>
+
       </body>
     </html>
   );
