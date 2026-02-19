@@ -11,27 +11,6 @@ export default function Home() {
         <h1 className="text-5xl md:text-6xl font-bold text-orange-400">
           Vanilla Renegade
         </h1>
-
-        <p className="text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-          A grounded DayZ experience focused on survival, tension and meaningful player interaction.
-          No chaos. No shortcuts. Just Chernarus as it was meant to be.
-        </p>
-
-        <div className="flex gap-4 justify-center pt-4 flex-wrap">
-          <Link
-            href="/how-to-join"
-            className="bg-orange-500 hover:bg-orange-400 text-black px-6 py-3 rounded-full font-semibold transition"
-          >
-            Join the Server
-          </Link>
-
-          <Link
-            href="/server-info"
-            className="border border-orange-400/40 hover:border-orange-400 px-6 py-3 rounded-full font-semibold transition"
-          >
-            Learn More
-          </Link>
-        </div>
       </section>
 
 
