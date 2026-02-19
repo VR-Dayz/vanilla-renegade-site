@@ -27,26 +27,3 @@ export default function Leaderboard() {
             deaths: p.deaths,
             kd: (p.deaths === 0 ? p.kills : (p.kills / p.deaths)).toFixed(2)
           }))
-          .sort((a: any, b: any) => b.kills - a.kills)
-          .map((p: any, index: number) => ({
-            rank: index + 1,
-            ...p
-          }));
-
-        setPlayers(sorted);
-        setLoading(false);
-      });
-  }, []);
-
-  return (
-    <main className="mx-auto max-w-6xl px-4 py-16 text-zinc-100">
-
-      <h1 className="text-4xl font-bold text-orange-400 mb-10">
-        Player Leaderboard
-      </h1>
-
-      <div className="bg-black/50 border border-orange-500/20 rounded-2xl overflow-hidden">
-
-        <table className="w-full text-left">
-          <thead className=
-
