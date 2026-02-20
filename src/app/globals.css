@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
-/* Theme colors */
+/* =========================
+   Theme colors
+========================= */
 :root {
   --vr-accent: 228 138 42;
   --vr-highlight: 243 192 106;
 }
 
-/* ---- MOBILE VIEWPORT FIX ---- */
-/* Allow document to scroll naturally */
+/* =========================
+   Document behaviour
+   (prevents mobile fullscreen / navbar disappearing)
+========================= */
 html {
   height: auto;
 }
@@ -15,20 +19,54 @@ html {
 body {
   min-height: 100svh;
   height: auto;
+  margin: 0;
   color: rgb(244 244 245);
-  background: transparent;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+
+  /* Fallback color */
+  background-color: #000;
+
+  /* GLOBAL WALLPAPER */
+  background-image: url("/vr_loadingscreen.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-/* Selection color */
+/* Mobile browsers can't render fixed backgrounds correctly */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+/* =========================
+   Readability overlay
+========================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* =========================
+   Selection color
+========================= */
 ::selection {
   background: rgba(var(--vr-accent), 0.35);
 }
 
-/* Scrollbar */
+/* =========================
+   Scrollbar styling
+========================= */
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(var(--vr-accent), 0.35);
   border-radius: 10px;
