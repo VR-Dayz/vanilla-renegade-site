@@ -41,22 +41,6 @@ body {
 }
 
 /* =========================
-   Readability overlay (FIXED — was too dark)
-========================= */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    linear-gradient(
-      rgba(10, 7, 3, 0.45),
-      rgba(10, 7, 3, 0.65)
-    );
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* =========================
    Selection color
 ========================= */
 ::selection {
@@ -76,7 +60,7 @@ body::before {
 }
 
 /* =========================
-   Glass Panels (Adjusted transparency)
+   Glass Panels
 ========================= */
 .glass {
   background: rgba(18, 18, 18, 0.35);
@@ -108,7 +92,7 @@ body::before {
 }
 
 /* =========================
-   Titles / Accent glow (stronger)
+   Titles / Accent glow
 ========================= */
 .title-glow {
   color: rgb(var(--vr-highlight));
