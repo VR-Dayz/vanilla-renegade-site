@@ -10,7 +10,6 @@
 
 /* =========================
    Document behaviour
-   (prevents mobile fullscreen / navbar disappearing)
 ========================= */
 html {
   height: auto;
@@ -23,10 +22,10 @@ body {
   color: rgb(244 244 245);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 
-  /* Fallback color */
+  /* fallback */
   background-color: #000;
 
-  /* GLOBAL WALLPAPER */
+  /* WALLPAPER */
   background-image: url("/vr_loadingscreen.png");
   background-size: cover;
   background-position: center;
@@ -48,7 +47,11 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.65),
+      rgba(0,0,0,0.80)
+    );
   pointer-events: none;
   z-index: -1;
 }
@@ -70,4 +73,50 @@ body::before {
 ::-webkit-scrollbar-thumb {
   background: rgba(var(--vr-accent), 0.35);
   border-radius: 10px;
+}
+
+/* =========================
+   Glass Panels (OLD SITE STYLE)
+========================= */
+.glass {
+  background: rgba(20, 20, 20, 0.45);
+  border: 1px solid rgba(var(--vr-accent), 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 18px;
+  box-shadow:
+    0 0 25px rgba(var(--vr-accent), 0.15),
+    inset 0 0 40px rgba(0,0,0,0.35);
+  transition: all .25s ease;
+}
+
+.glass:hover {
+  border-color: rgba(var(--vr-highlight), 0.5);
+  box-shadow:
+    0 0 45px rgba(var(--vr-accent), 0.25),
+    inset 0 0 50px rgba(0,0,0,0.45);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Page layout helpers
+========================= */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+/* =========================
+   Titles / Accent glow
+========================= */
+.title-glow {
+  color: rgb(var(--vr-highlight));
+  text-shadow:
+    0 0 12px rgba(var(--vr-accent), 0.45),
+    0 0 40px rgba(var(--vr-accent), 0.25);
+}
+
+.accent {
+  color: rgb(var(--vr-accent));
 }
