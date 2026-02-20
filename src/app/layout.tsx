@@ -15,7 +15,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="text-white antialiased">
-        <SiteShell>{children}</SiteShell>
+        {/* Atmospheric depth layer */}
+        <div className="relative min-h-screen">
+          
+          {/* Content layer (above background overlay) */}
+          <div className="relative z-10">
+            <SiteShell>{children}</SiteShell>
+          </div>
+
+        </div>
       </body>
     </html>
   );
