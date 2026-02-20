@@ -38,7 +38,7 @@ export default function Page() {
               kills,
               deaths,
               kd: deaths === 0 ? kills.toFixed(2) : (kills / deaths).toFixed(2),
-              rank: 0, // temporary
+              rank: 0,
             };
           })
           .sort((a, b) => b.kills - a.kills)
@@ -77,42 +77,13 @@ export default function Page() {
           </thead>
 
           <tbody>
-            {loading && (
+            {loading ? (
               <tr>
                 <td colSpan={5} className="p-6 text-center text-zinc-400">
                   Loading leaderboard...
                 </td>
               </tr>
-            )}
-
-            {!loading && players.length === 0 && (
+            ) : players.length === 0 ? (
               <tr>
                 <td colSpan={5} className="p-6 text-center text-zinc-500">
-                  No player statistics available yet.
-                </td>
-              </tr>
-            )}
-
-            {!loading &&
-              players.map((p) => (
-                <tr
-                  key={p.rank}
-                  className="border-t border-orange-500/10 hover:bg-white/5 transition"
-                >
-                  <td className="p-4 font-semibold text-orange-300">#{p.rank}</td>
-                  <td className="p-4">{p.name}</td>
-                  <td className="p-4">{p.kills}</td>
-                  <td className="p-4">{p.deaths}</td>
-                  <td className="p-4">{p.kd}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </div>
-
-      <p className="text-sm text-zinc-500 mt-4">
-        Statistics update periodically.
-      </p>
-    </div>
-  );
 }
