@@ -17,9 +17,9 @@ const NavLink = ({ href, label }: { href: string; label: string }) => (
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-[100svh] flex flex-col bg-black text-white">
 
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-black/35 border-b border-white/10">
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-black/35 border-b border-white/10 supports-[backdrop-filter]:bg-black/30">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
 
           <Link href="/" className="flex items-center gap-2">
