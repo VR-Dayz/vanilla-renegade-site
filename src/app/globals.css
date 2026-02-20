@@ -41,7 +41,7 @@ body {
 }
 
 /* =========================
-   Readability overlay
+   Readability overlay (FIXED — was too dark)
 ========================= */
 body::before {
   content: "";
@@ -49,8 +49,8 @@ body::before {
   inset: 0;
   background:
     linear-gradient(
-      rgba(0,0,0,0.65),
-      rgba(0,0,0,0.80)
+      rgba(10, 7, 3, 0.45),
+      rgba(10, 7, 3, 0.65)
     );
   pointer-events: none;
   z-index: -1;
@@ -76,26 +76,26 @@ body::before {
 }
 
 /* =========================
-   Glass Panels (OLD SITE STYLE)
+   Glass Panels (Adjusted transparency)
 ========================= */
 .glass {
-  background: rgba(20, 20, 20, 0.45);
-  border: 1px solid rgba(var(--vr-accent), 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(18, 18, 18, 0.35);
+  border: 1px solid rgba(var(--vr-accent), 0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 18px;
   box-shadow:
-    0 0 25px rgba(var(--vr-accent), 0.15),
-    inset 0 0 40px rgba(0,0,0,0.35);
+    0 0 30px rgba(var(--vr-accent), 0.18),
+    inset 0 0 60px rgba(0,0,0,0.35);
   transition: all .25s ease;
 }
 
 .glass:hover {
-  border-color: rgba(var(--vr-highlight), 0.5);
+  border-color: rgba(var(--vr-highlight), 0.55);
   box-shadow:
-    0 0 45px rgba(var(--vr-accent), 0.25),
-    inset 0 0 50px rgba(0,0,0,0.45);
-  transform: translateY(-2px);
+    0 0 55px rgba(var(--vr-accent), 0.35),
+    inset 0 0 70px rgba(0,0,0,0.45);
+  transform: translateY(-3px);
 }
 
 /* =========================
@@ -108,13 +108,13 @@ body::before {
 }
 
 /* =========================
-   Titles / Accent glow
+   Titles / Accent glow (stronger)
 ========================= */
 .title-glow {
   color: rgb(var(--vr-highlight));
   text-shadow:
-    0 0 12px rgba(var(--vr-accent), 0.45),
-    0 0 40px rgba(var(--vr-accent), 0.25);
+    0 0 18px rgba(var(--vr-accent), 0.65),
+    0 0 50px rgba(var(--vr-accent), 0.35);
 }
 
 .accent {
