@@ -5,12 +5,9 @@ export default function Home() {
     <main className="text-white">
 
       {/* HERO */}
-      <section className="relative py-40 px-6">
+      <section className="py-40 px-6 bg-gradient-to-b from-black/80 via-black/70 to-black/30">
 
-        {/* dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/20" />
-
-        <div className="relative max-w-4xl mx-auto text-center space-y-6">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-4xl md:text-6xl font-semibold tracking-wide text-orange-300 drop-shadow-lg">
             Welcome to Vanilla Renegade
           </h1>
