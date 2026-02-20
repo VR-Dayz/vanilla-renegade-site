@@ -17,8 +17,9 @@ const NavLink = ({ href, label }: { href: string; label: string }) => (
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-[100svh] flex flex-col bg-black text-white">
+    <div className="flex flex-col min-h-[100svh] bg-black text-white">
 
+      {/* Header */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-black/35 border-b border-white/10 supports-[backdrop-filter]:bg-black/30">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
 
@@ -50,10 +51,12 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         </div>
       </header>
 
-      <main className="flex-1">
+      {/* Main content */}
+      <main className="flex-1 min-h-[calc(100svh-72px)]">
         {children}
       </main>
 
+      {/* Footer */}
       <footer className="border-t border-white/10 bg-black/40">
         <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-zinc-300/80 flex flex-col gap-2">
           <div>
