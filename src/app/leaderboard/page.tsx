@@ -86,4 +86,29 @@ export default function Page() {
             ) : players.length === 0 ? (
               <tr>
                 <td colSpan={5} className="p-6 text-center text-zinc-500">
-}
+                  No player statistics available yet.
+                </td>
+              </tr>
+            ) : (
+              players.map((p) => (
+                <tr
+                  key={p.rank}
+                  className="border-t border-orange-500/10 hover:bg-white/5 transition"
+                >
+                  <td className="p-4 font-semibold text-orange-300">#{p.rank}</td>
+                  <td className="p-4">{p.name}</td>
+                  <td className="p-4">{p.kills}</td>
+                  <td className="p-4">{p.deaths}</td>
+                  <td className="p-4">{p.kd}</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      <p className="text-sm text-zinc-500 mt-4">
+        Statistics update periodically.
+      </p>
+    </div>
+  );
