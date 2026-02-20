@@ -14,11 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white antialiased">
-        {/* forces page to always exceed viewport height */}
-        <div className="min-h-[101svh]">
-          <SiteShell>{children}</SiteShell>
-        </div>
+      <body className="text-white antialiased">
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );
