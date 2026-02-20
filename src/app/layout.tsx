@@ -5,9 +5,6 @@ import { SiteShell } from "@/components/SiteShell";
 export const metadata: Metadata = {
   title: "Vanilla Renegade",
   description: "Vanilla Renegade DayZ Server",
-
-  // Forces mobile browsers to render their UI bar visibly
-  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
@@ -18,9 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black text-white antialiased">
-        <SiteShell>
-          {children}
-        </SiteShell>
+        {/* forces page to always exceed viewport height */}
+        <div className="min-h-[101svh]">
+          <SiteShell>{children}</SiteShell>
+        </div>
       </body>
     </html>
   );
