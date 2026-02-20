@@ -6,12 +6,15 @@
   --vr-highlight: 243 192 106;
 }
 
-/* Base styling */
-html, body {
-  height: 100%;
+/* ---- MOBILE VIEWPORT FIX ---- */
+/* Allow document to scroll naturally */
+html {
+  height: auto;
 }
 
 body {
+  min-height: 100svh;
+  height: auto;
   color: rgb(244 244 245);
   background: transparent;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
