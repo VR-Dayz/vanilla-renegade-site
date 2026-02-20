@@ -14,10 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white antialiased min-h-[100svh] overflow-x-hidden">
-        <SiteShell>
-          {children}
-        </SiteShell>
+      <body className="bg-black text-white antialiased">
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );
