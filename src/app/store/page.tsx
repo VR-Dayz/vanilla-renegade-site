@@ -67,6 +67,17 @@ export default function Store() {
             <p className="mt-3 text-zinc-300">
               Apply a custom cosmetic skin to a vehicle you already own.
             </p>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <img
+                src="/Customveh.png"
+                alt="Custom vehicle skin examples"
+                className="w-full h-auto object-contain"
+              />
+              <p className="mt-3 text-sm text-zinc-400 text-center">
+                Example custom vehicle skins
+              </p>
+            </div>
           </div>
 
         </div>
