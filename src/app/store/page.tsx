@@ -74,13 +74,7 @@ export default function Store() {
                 alt="Custom vehicle skin examples"
                 className="w-full h-auto object-contain"
               />
-              <p className="mt-3 text-sm text-zinc-400 text-center">
-                Example custom vehicle skins
-              </p>
-            </div>
-          </div>
-
-        </div>
+      </div>
       </div>
 
       {/* Payments */}
