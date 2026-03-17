@@ -16,6 +16,8 @@ export async function GET() {
   const url = `https://api.cftools.cloud/v1/server/${serverId}/leaderboard`;
 
   try {
+    console.log("Calling CF Tools URL:", url);
+
     const res = await fetch(url, {
       method: "GET",
       headers: {
@@ -23,7 +25,7 @@ export async function GET() {
         Accept: "application/json",
         "User-Agent": "VanillaRenegadeLeaderboard/1.0",
       },
-      next: { revalidate: 60 }, // ✅ cache for 60 seconds
+      next: { revalidate: 60 },
     });
 
     const text = await res.text();
@@ -41,16 +43,17 @@ export async function GET() {
       );
     }
 
-    const data = JSON.parse(text);
-
-    return NextResponse.json(data);
+    return new NextResponse(text, {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (error) {
     console.error("Leaderboard route crashed:", error);
 
     return NextResponse.json(
       {
-        error:
-          error instanceof Error ? error.message : "Leaderboard unavailable",
+        error: "Fetch crashed before response",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 }
     );
