@@ -61,18 +61,18 @@ export default function Store() {
 
           {/* National Flag + Armband */}
           <div className="glass p-6 transition duration-300 hover:shadow-[0_0_16px_rgba(255,255,255,0.06)]">
-            <h3 className="text-xl font-semibold"> National Flag + Armband</h3>
+            <h3 className="text-xl font-semibold">National Flag + Armband</h3>
             <p className="accent font-semibold mt-1">€8.99</p>
 
             <p className="mt-3 text-zinc-300">
               Represent your nation (Life Time Purchase)
             </p>
 
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 flex justify-center items-center">
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 flex justify-center items-center overflow-hidden">
               <img
                 src="/armbands.png"
                 alt="National flag armband examples"
-                className="max-h-48 object-contain"
+                className="max-h-48 object-contain transition duration-300 hover:scale-105"
               />
             </div>
           </div>
@@ -86,6 +86,14 @@ export default function Store() {
               Get your custom flag today. Provide your own design or let us create one for you.
               Our team will bring your vision to life and ensure your flag stands out wherever it is displayed.
             </p>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 flex justify-center items-center overflow-hidden">
+              <img
+                src="/vrflag.png"
+                alt="Custom clan flag example"
+                className="max-h-40 object-contain transition duration-300 hover:scale-105"
+              />
+            </div>
           </div>
 
           {/* Custom Vehicle */}
@@ -97,11 +105,11 @@ export default function Store() {
               Must already own a vehicle.
             </p>
 
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 overflow-hidden">
               <img
                 src="/Customveh.png"
                 alt="Custom vehicle examples"
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-contain transition duration-300 hover:scale-105"
               />
             </div>
           </div>
@@ -153,13 +161,9 @@ export default function Store() {
           They do not provide competitive gameplay advantages.
         </p>
 
-        <p>
-          All players have equal access regardless of contribution.
-        </p>
+        <p>All players have equal access regardless of contribution.</p>
 
-        <p>
-          Vanilla Renegade is not affiliated with Bohemia Interactive.
-        </p>
+        <p>Vanilla Renegade is not affiliated with Bohemia Interactive.</p>
 
       </div>
 
