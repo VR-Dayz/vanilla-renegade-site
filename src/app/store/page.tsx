@@ -1,6 +1,7 @@
 export default function Store() {
   return (
     <main className="section text-zinc-100">
+
       <h1 className="text-4xl font-bold title-glow">Server Store</h1>
 
       <p className="mt-6 text-zinc-300 max-w-3xl">
@@ -10,6 +11,7 @@ export default function Store() {
 
       {/* Packages */}
       <div className="mt-12 grid gap-8 md:grid-cols-3">
+
         {/* Bronze */}
         <div className="glass p-6 border border-amber-700/40 transition duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(180,83,9,0.15)]">
           <h2 className="text-2xl font-semibold text-amber-500">Bronze</h2>
@@ -34,6 +36,7 @@ export default function Store() {
 
         {/* Gold */}
         <div className="glass relative p-6 border border-yellow-500/50 ring-1 ring-yellow-400/20 transition duration-300 hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(250,204,21,0.22)]">
+
           <div className="absolute -top-3 right-4 rounded-full border border-yellow-300/40 bg-yellow-400 text-black text-xs font-bold px-3 py-1 shadow-lg">
             Most Popular
           </div>
@@ -47,6 +50,7 @@ export default function Store() {
             <li>Custom Vehicle</li>
           </ul>
         </div>
+
       </div>
 
       {/* Extras */}
@@ -54,26 +58,28 @@ export default function Store() {
         <h2 className="text-2xl font-semibold title-glow">Extras</h2>
 
         <div className="mt-6 grid gap-8 md:grid-cols-3">
-          {/* Flag */}
+
+          {/* National Flag + Armband */}
           <div className="glass p-6 transition duration-300 hover:shadow-[0_0_16px_rgba(255,255,255,0.06)]">
-            <h3 className="text-xl font-semibold">Lifetime National Flag + Armband</h3>
+            <h3 className="text-xl font-semibold"> National Flag + Armband</h3>
             <p className="accent font-semibold mt-1">€8.99</p>
+
             <p className="mt-3 text-zinc-300">
-              Represent your nation permanently across all wipes.
+              Represent your nation (Life Time Purchase)
             </p>
 
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 flex justify-center items-center">
               <img
                 src="/armbands.png"
                 alt="National flag armband examples"
-                className="w-full h-auto object-contain"
+                className="max-h-48 object-contain"
               />
             </div>
           </div>
 
           {/* Custom Clan Flag */}
           <div className="glass p-6 border border-[rgb(var(--vr-accent))]/30 transition duration-300 hover:scale-[1.02] hover:shadow-[0_0_18px_rgba(0,255,150,0.15)]">
-            <h3 className="text-xl font-semibold text-[rgb(var(--vr-accent))]">Custom Clan Flag</h3>
+            <h3 className="text-xl font-semibold">Custom Clan Flag</h3>
             <p className="accent font-semibold mt-1">£14.99</p>
 
             <p className="mt-3 text-zinc-300 text-sm leading-relaxed">
@@ -86,7 +92,10 @@ export default function Store() {
           <div className="glass p-6 transition duration-300 hover:shadow-[0_0_16px_rgba(255,255,255,0.06)]">
             <h3 className="text-xl font-semibold">Custom Vehicle</h3>
             <p className="accent font-semibold mt-1">€9.99</p>
-            <p className="mt-3 text-zinc-300">Must already own a vehicle.</p>
+
+            <p className="mt-3 text-zinc-300">
+              Must already own a vehicle.
+            </p>
 
             <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
               <img
@@ -96,17 +105,20 @@ export default function Store() {
               />
             </div>
           </div>
+
         </div>
       </div>
 
       {/* Payments */}
       <div className="mt-16">
         <h2 className="text-2xl font-semibold title-glow">Purchase / Payment</h2>
+
         <p className="mt-3 text-zinc-300">
           We accept PayPal, credit cards, and other supported payment methods.
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">
+
           <a
             href="https://www.paypal.com/donate/?hosted_button_id=WAHEZG98JQP7G"
             target="_blank"
@@ -124,6 +136,7 @@ export default function Store() {
           >
             Other Payment Methods
           </a>
+
         </div>
       </div>
 
@@ -140,10 +153,16 @@ export default function Store() {
           They do not provide competitive gameplay advantages.
         </p>
 
-        <p>All players have equal access regardless of contribution.</p>
+        <p>
+          All players have equal access regardless of contribution.
+        </p>
 
-        <p>Vanilla Renegade is not affiliated with Bohemia Interactive.</p>
+        <p>
+          Vanilla Renegade is not affiliated with Bohemia Interactive.
+        </p>
+
       </div>
+
     </main>
   );
 }
