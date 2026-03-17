@@ -23,25 +23,30 @@ export async function GET() {
         Accept: "application/json",
         "User-Agent": "VanillaRenegadeLeaderboard/1.0",
       },
+      next: { revalidate: 60 },
     });
 
     const text = await res.text();
 
-    return NextResponse.json({
-      ok: res.ok,
-      status: res.status,
-      body: text,
+    if (!res.ok) {
+      return NextResponse.json(
+        {
+          error: "CF Tools request failed",
+          upstreamStatus: res.status,
+          upstreamBody: text,
+        },
+        { status: 500 }
+      );
+    }
+
+    return new NextResponse(text, {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
     });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(
       {
-        error: "Fetch crashed before response",
-        message: error?.message,
-        causeMessage: error?.cause?.message,
-        causeCode: error?.cause?.code,
-        causeName: error?.cause?.name,
-        cause: String(error?.cause),
-        url,
+        error: error instanceof Error ? error.message : "Leaderboard unavailable",
       },
       { status: 500 }
     );
