@@ -42,9 +42,10 @@ export default function Store() {
           <ul className="mt-4 space-y-2 text-zinc-300">
             <li>Priority Queue Access</li>
             <li>National Flag + Armband</li>
-            <li>Custom Vehicle Skin (requires owned vehicle)</li>
+            <li>Custom Vehicle</li>
           </ul>
         </div>
+
       </div>
 
       {/* Extras */}
@@ -53,6 +54,7 @@ export default function Store() {
 
         <div className="mt-6 grid gap-8 md:grid-cols-2">
 
+          {/* Flag */}
           <div className="glass p-6">
             <h3 className="text-xl font-semibold">Lifetime National Flag + Armband</h3>
             <p className="accent font-semibold mt-1">€8.99</p>
@@ -61,20 +63,24 @@ export default function Store() {
             </p>
           </div>
 
+          {/* Custom Vehicle */}
           <div className="glass p-6">
-            <h3 className="text-xl font-semibold">Custom Vehicle Skin</h3>
+            <h3 className="text-xl font-semibold">Custom Vehicle</h3>
             <p className="accent font-semibold mt-1">€9.99</p>
             <p className="mt-3 text-zinc-300">
-              Apply a custom cosmetic skin to a vehicle you already own.
+              Must already own a vehicle.
             </p>
 
             <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
               <img
                 src="/Customveh.png"
-                alt="Custom vehicle skin examples"
+                alt="Custom vehicle examples"
                 className="w-full h-auto object-contain"
               />
-      </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       {/* Payments */}
