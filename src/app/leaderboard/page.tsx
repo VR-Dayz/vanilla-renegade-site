@@ -8,44 +8,80 @@ type Player = {
   kills: number;
   deaths: number;
   kd: string;
+  playTimeSeconds: number;
+  longestLifeSeconds: number;
 };
 
 type ApiEntry = {
   name?: string;
   kills?: number | string;
   deaths?: number | string;
+  playTimeSeconds?: number | string;
+  longestLifeSeconds?: number | string;
 };
+
+function formatDuration(totalSeconds: number) {
+  const seconds = Math.max(0, Math.floor(totalSeconds));
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+
+  if (hours > 0) return `${hours}h ${minutes}m`;
+  if (minutes > 0) return `${minutes}m ${remainingSeconds}s`;
+  return `${remainingSeconds}s`;
+}
 
 export default function Page() {
   const [players, setPlayers] = useState<Player[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function loadLeaderboard() {
       try {
-        const res = await fetch("/api/leaderboard");
+        const res = await fetch("/api/leaderboard", {
+          cache: "no-store",
+        });
+
+        if (!res.ok) {
+          throw new Error(`Request failed with status ${res.status}`);
+        }
+
         const json = await res.json();
 
-        const entries: ApiEntry[] = json?.result?.entries ?? [];
+        const entries: ApiEntry[] =
+          json?.result?.entries ??
+          json?.entries ??
+          json?.players ??
+          [];
 
         const mapped: Player[] = entries
           .map((p) => {
             const kills = Number(p.kills ?? 0);
             const deaths = Number(p.deaths ?? 0);
+            const playTimeSeconds = Number(p.playTimeSeconds ?? 0);
+            const longestLifeSeconds = Number(p.longestLifeSeconds ?? 0);
+
             return {
+              rank: 0,
               name: p.name ?? "Unknown",
               kills,
               deaths,
+              playTimeSeconds,
+              longestLifeSeconds,
               kd: deaths === 0 ? kills.toFixed(2) : (kills / deaths).toFixed(2),
-              rank: 0,
             };
           })
-          .sort((a, b) => b.kills - a.kills)
-          .map((p, index) => ({ ...p, rank: index + 1 }));
+          .sort((a, b) => b.playTimeSeconds - a.playTimeSeconds)
+          .map((player, index) => ({
+            ...player,
+            rank: index + 1,
+          }));
 
         setPlayers(mapped);
       } catch (err) {
         console.error("Leaderboard load failed:", err);
+        setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
         setLoading(false);
       }
@@ -55,46 +91,75 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 text-zinc-100">
-      <h1 className="text-4xl font-bold text-orange-400 mb-10">Player Leaderboard</h1>
+    <div className="mx-auto max-w-7xl px-4 py-16 text-zinc-100">
+      <h1 className="mb-10 text-4xl font-bold text-orange-400">
+        Player Leaderboard
+      </h1>
 
-      <div className="bg-black/50 border border-orange-500/20 rounded-2xl overflow-hidden">
-        <table className="w-full text-left">
-          <thead className="bg-black/70 text-orange-400">
-            <tr>
-              <th className="p-4">Rank</th>
-              <th className="p-4">Player</th>
-              <th className="p-4">Kills</th>
-              <th className="p-4">Deaths</th>
-              <th className="p-4">K/D</th>
-            </tr>
-          </thead>
+      <div className="overflow-hidden rounded-2xl border border-orange-500/20 bg-black/50">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[900px] text-left">
+            <thead className="bg-black/70 text-orange-400">
+              <tr>
+                <th className="p-4">Rank</th>
+                <th className="p-4">Player</th>
+                <th className="p-4">Time Played</th>
+                <th className="p-4">Longest Life</th>
+                <th className="p-4">Kills</th>
+                <th className="p-4">Deaths</th>
+                <th className="p-4">K/D</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {loading ? (
-              <tr>
-                <td colSpan={5} className="p-6 text-center text-zinc-400">Loading leaderboard...</td>
-              </tr>
-            ) : players.length === 0 ? (
-              <tr>
-                <td colSpan={5} className="p-6 text-center text-zinc-500">No player statistics available yet.</td>
-              </tr>
-            ) : (
-              players.map((p) => (
-                <tr key={p.rank} className="border-t border-orange-500/10 hover:bg-white/5 transition">
-                  <td className="p-4 font-semibold text-orange-300">#{p.rank}</td>
-                  <td className="p-4">{p.name}</td>
-                  <td className="p-4">{p.kills}</td>
-                  <td className="p-4">{p.deaths}</td>
-                  <td className="p-4">{p.kd}</td>
+            <tbody>
+              {loading ? (
+                <tr>
+                  <td colSpan={7} className="p-6 text-center text-zinc-400">
+                    Loading leaderboard...
+                  </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : error ? (
+                <tr>
+                  <td colSpan={7} className="p-6 text-center text-red-400">
+                    Failed to load leaderboard: {error}
+                  </td>
+                </tr>
+              ) : players.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="p-6 text-center text-zinc-500">
+                    No player statistics available yet.
+                  </td>
+                </tr>
+              ) : (
+                players.map((player) => (
+                  <tr
+                    key={`${player.name}-${player.rank}`}
+                    className="border-t border-orange-500/10 transition hover:bg-white/5"
+                  >
+                    <td className="p-4 font-semibold text-orange-300">
+                      #{player.rank}
+                    </td>
+                    <td className="p-4 font-medium">{player.name}</td>
+                    <td className="p-4">
+                      {formatDuration(player.playTimeSeconds)}
+                    </td>
+                    <td className="p-4">
+                      {formatDuration(player.longestLifeSeconds)}
+                    </td>
+                    <td className="p-4">{player.kills}</td>
+                    <td className="p-4">{player.deaths}</td>
+                    <td className="p-4">{player.kd}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <p className="text-sm text-zinc-500 mt-4">Statistics update periodically.</p>
+      <p className="mt-4 text-sm text-zinc-500">
+        Ranked by total time played in the server.
+      </p>
     </div>
   );
 }
