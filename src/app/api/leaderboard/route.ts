@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const runtime = "nodejs"; // 👈 THIS is the important part
+export const runtime = "nodejs";
 
 export async function GET() {
   const apiKey = process.env.CFTOOLS_API_KEY;
@@ -21,9 +21,9 @@ export async function GET() {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         Accept: "application/json",
-        "User-Agent": "VanillaRenegade/1.0", // 👈 also important
+        "User-Agent": "VanillaRenegadeLeaderboard/1.0",
       },
-      cache: "no-store",
+      next: { revalidate: 60 }, // ✅ cache for 60 seconds
     });
 
     const text = await res.text();
