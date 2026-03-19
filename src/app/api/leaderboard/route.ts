@@ -1,6 +1,29 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
+
+type SortKey =
+  | "playtime"
+  | "kills"
+  | "deaths"
+  | "kdratio"
+  | "longest_kill"
+  | "longest_shot"
+  | "suicides";
+
+const ALLOWED_STATS: SortKey[] = [
+  "playtime",
+  "kills",
+  "deaths",
+  "kdratio",
+  "longest_kill",
+  "longest_shot",
+  "suicides",
+];
+
+function isValidSortKey(value: string): value is SortKey {
+  return ALLOWED_STATS.includes(value as SortKey);
+}
 
 async function getCFToolsToken() {
   const appId = process.env.CFTOOLS_APP_ID;
@@ -44,7 +67,7 @@ async function getCFToolsToken() {
   return token;
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const appId = process.env.CFTOOLS_APP_ID;
   const serverId = process.env.CFTOOLS_SERVER_ID;
 
@@ -55,12 +78,32 @@ export async function GET() {
     );
   }
 
+  const searchParams = req.nextUrl.searchParams;
+
+  const statParam = searchParams.get("stat") ?? "playtime";
+  const orderParam = searchParams.get("order") ?? "-1";
+  const limitParam = searchParams.get("limit") ?? "100";
+
+  const stat = isValidSortKey(statParam) ? statParam : "playtime";
+  const order = orderParam === "1" ? "1" : "-1";
+
+  let limit = Number(limitParam);
+  if (!Number.isFinite(limit) || limit <= 0) {
+    limit = 100;
+  }
+  limit = Math.min(limit, 100);
+
   try {
     const token = await getCFToolsToken();
 
-    const url = `https://data.cftools.cloud/v1/server/${serverId}/leaderboard?stat=playtime&order=-1&limit=100`;
+    const url = new URL(
+      `https://data.cftools.cloud/v1/server/${serverId}/leaderboard`
+    );
+    url.searchParams.set("stat", stat);
+    url.searchParams.set("order", order);
+    url.searchParams.set("limit", String(limit));
 
-    const res = await fetch(url, {
+    const res = await fetch(url.toString(), {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -78,6 +121,11 @@ export async function GET() {
           error: "CF Tools request failed",
           upstreamStatus: res.status,
           upstreamBody: text,
+          requested: {
+            stat,
+            order,
+            limit,
+          },
         },
         { status: 500 }
       );
@@ -85,12 +133,15 @@ export async function GET() {
 
     return new NextResponse(text, {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   } catch (error) {
     return NextResponse.json(
       {
-        error: error instanceof Error ? error.message : "Leaderboard unavailable",
+        error:
+          error instanceof Error ? error.message : "Leaderboard unavailable",
       },
       { status: 500 }
     );
