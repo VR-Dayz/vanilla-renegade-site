@@ -1,6 +1,6 @@
 "use client";
 
-const SERVER_IP = "YOUR.SERVER.IP:2302";
+const SERVER_IP = "37.156.35.85:2302";
 const SERVER_NAME = "Vanilla Renegade";
 const DISCORD_URL = "https://discord.gg/y8CHBBtrvk";
 
@@ -10,7 +10,7 @@ export default function Home() {
       await navigator.clipboard.writeText(text);
       alert(successMessage);
     } catch {
-      alert(text);
+      alert(`Copy failed. ${text}`);
     }
   };
 
@@ -24,7 +24,7 @@ export default function Home() {
           </p>
 
           <h1 className="mt-4 text-4xl font-semibold tracking-wide text-orange-300 drop-shadow-lg md:text-6xl">
-            {SERVER_NAME}
+            Welcome to {SERVER_NAME}
           </h1>
 
           <p className="mt-4 text-lg tracking-wide text-zinc-200 md:text-2xl">
@@ -32,30 +32,28 @@ export default function Home() {
           </p>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 md:text-lg">
-            No safe zones. No handouts. Just DayZ, shaped by the people who
-            survive it.
+            A grounded DayZ experience with a strong community, balanced rules,
+            and a server built for players who want survival to feel rewarding.
           </p>
 
-          {/* PRIMARY CTA AREA */}
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="/how-to-join"
+              className="w-full rounded-2xl bg-orange-400 px-6 py-3 text-center font-semibold text-black transition hover:bg-orange-300 sm:w-auto"
+            >
+              How to Join
+            </a>
+
             <a
               href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full rounded-2xl bg-orange-400 px-6 py-3 text-center font-semibold text-black transition hover:bg-orange-300 sm:w-auto"
-            >
-              Join the Discord
-            </a>
-
-            <a
-              href="/how-to-join"
               className="w-full rounded-2xl border border-zinc-600 bg-black/30 px-6 py-3 text-center font-medium text-white transition hover:border-zinc-400 hover:bg-white/5 sm:w-auto"
             >
-              How to Join
+              Join Discord
             </a>
           </div>
 
-          {/* SERVER INFO */}
           <div className="mx-auto mt-8 flex max-w-xl flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 sm:flex-row">
             <div className="text-sm text-zinc-400">
               Direct connect:{" "}
@@ -102,32 +100,32 @@ export default function Home() {
       <section className="px-6 pb-24 pt-20">
         <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/5 p-8 text-center md:p-12">
           <h2 className="text-3xl font-semibold text-white md:text-4xl">
-            Ready to Survive?
+            Ready to get started?
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 md:text-lg">
-            Join the community, get the server details, and step into a version
-            of DayZ where every decision matters.
+            Join the community, connect to the server, and build your story in a
+            DayZ world that stays true to survival.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href={DISCORD_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full rounded-2xl bg-indigo-500 px-6 py-3 text-center font-semibold text-white transition hover:bg-indigo-400 sm:w-auto"
-            >
-              Open Discord
-            </a>
-
             <button
               onClick={() =>
                 copyToClipboard(SERVER_IP, `Server IP copied: ${SERVER_IP}`)
               }
-              className="w-full rounded-2xl border border-zinc-600 bg-black/30 px-6 py-3 font-medium text-white transition hover:border-zinc-400 hover:bg-white/5 sm:w-auto"
+              className="w-full rounded-2xl bg-orange-400 px-6 py-3 font-semibold text-black transition hover:bg-orange-300 sm:w-auto"
             >
               Copy Server IP
             </button>
+
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full rounded-2xl border border-zinc-600 bg-black/30 px-6 py-3 text-center font-medium text-white transition hover:border-zinc-400 hover:bg-white/5 sm:w-auto"
+            >
+              Open Discord
+            </a>
           </div>
         </div>
       </section>
