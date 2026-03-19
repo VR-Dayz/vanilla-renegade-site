@@ -13,7 +13,8 @@ export async function GET() {
     );
   }
 
-  const url = `https://api.cftools.cloud/v1/server/${serverId}/leaderboard`;
+  // ✅ FIXED DOMAIN HERE
+  const url = `https://data.cftools.cloud/v1/server/${serverId}/leaderboard`;
 
   try {
     const res = await fetch(url, {
