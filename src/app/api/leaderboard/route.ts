@@ -2,26 +2,70 @@ import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
+async function getCFToolsToken() {
+  const appId = process.env.CFTOOLS_APP_ID;
+  const appSecret = process.env.CFTOOLS_APP_SECRET;
+
+  if (!appId || !appSecret) {
+    throw new Error("Missing CFTOOLS_APP_ID or CFTOOLS_APP_SECRET");
+  }
+
+  const authRes = await fetch("https://data.cftools.cloud/v1/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "User-Agent": appId,
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      application_id: appId,
+      secret: appSecret,
+    }),
+    cache: "no-store",
+  });
+
+  const authText = await authRes.text();
+
+  if (!authRes.ok) {
+    throw new Error(`Auth failed: ${authText}`);
+  }
+
+  const authJson = JSON.parse(authText);
+
+  const token =
+    authJson?.token ??
+    authJson?.data?.token ??
+    authJson?.result?.token;
+
+  if (!token) {
+    throw new Error(`No token returned: ${authText}`);
+  }
+
+  return token;
+}
+
 export async function GET() {
-  const apiKey = process.env.CFTOOLS_API_KEY;
+  const appId = process.env.CFTOOLS_APP_ID;
   const serverId = process.env.CFTOOLS_SERVER_ID;
 
-  if (!apiKey || !serverId) {
+  if (!appId || !serverId) {
     return NextResponse.json(
-      { error: "Missing CFTOOLS_API_KEY or CFTOOLS_SERVER_ID" },
+      { error: "Missing CFTOOLS_APP_ID or CFTOOLS_SERVER_ID" },
       { status: 500 }
     );
   }
 
-  const url = `https://data.cftools.cloud/v1/server/${serverId}/leaderboard`;
-
   try {
+    const token = await getCFToolsToken();
+
+    const url = `https://data.cftools.cloud/v1/server/${serverId}/leaderboard?stat=playtime&order=-1&limit=100`;
+
     const res = await fetch(url, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${token}`,
         Accept: "application/json",
-        "User-Agent": "VanillaRenegadeLeaderboard/1.0",
+        "User-Agent": appId,
       },
       next: { revalidate: 60 },
     });
