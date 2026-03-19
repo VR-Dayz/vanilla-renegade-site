@@ -70,28 +70,16 @@ function getArrow(active: boolean, order: "1" | "-1") {
 }
 
 function getRowStyle(rank: number) {
-  if (rank === 1) {
-    return "bg-amber-400/10 hover:bg-amber-400/15";
-  }
-  if (rank === 2) {
-    return "bg-slate-300/10 hover:bg-slate-300/15";
-  }
-  if (rank === 3) {
-    return "bg-orange-700/10 hover:bg-orange-700/15";
-  }
+  if (rank === 1) return "bg-amber-400/10 hover:bg-amber-400/15";
+  if (rank === 2) return "bg-slate-300/10 hover:bg-slate-300/15";
+  if (rank === 3) return "bg-orange-700/10 hover:bg-orange-700/15";
   return "hover:bg-white/5";
 }
 
 function getRankStyle(rank: number) {
-  if (rank === 1) {
-    return "text-amber-300";
-  }
-  if (rank === 2) {
-    return "text-slate-200";
-  }
-  if (rank === 3) {
-    return "text-orange-400";
-  }
+  if (rank === 1) return "text-amber-300";
+  if (rank === 2) return "text-slate-200";
+  if (rank === 3) return "text-orange-400";
   return "text-orange-300";
 }
 
@@ -134,6 +122,7 @@ export default function Page() {
           const longestKill = Number(p.longest_kill ?? 0);
           const longestShot = Number(p.longest_shot ?? 0);
           const suicides = Number(p.suicides ?? 0);
+
           const kdValue =
             typeof p.kdratio !== "undefined"
               ? Number(p.kdratio ?? 0)
@@ -142,7 +131,7 @@ export default function Page() {
               : kills / deaths;
 
           return {
-            rank: Number(p.rank ?? index + 1),
+            rank: index + 1, // ✅ FIXED HERE
             name: p.latest_name ?? "Unknown",
             kills,
             deaths,
@@ -287,7 +276,7 @@ export default function Page() {
                         )}`}
                       >
                         <span className="inline-flex items-center gap-2">
-                          {medal ? <span>{medal}</span> : null}
+                          {medal && <span>{medal}</span>}
                           <span>#{player.rank}</span>
                         </span>
                       </td>
