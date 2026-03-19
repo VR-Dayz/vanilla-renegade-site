@@ -5,93 +5,78 @@ const SERVER_NAME = "Vanilla Renegade";
 const DISCORD_URL = "https://discord.gg/y8CHBBtrvk";
 
 export default function Home() {
-  const copyServerIP = async () => {
+  const copyToClipboard = async (text: string, successMessage: string) => {
     try {
-      await navigator.clipboard.writeText(SERVER_IP);
-      alert(`Server IP copied: ${SERVER_IP}`);
+      await navigator.clipboard.writeText(text);
+      alert(successMessage);
     } catch {
-      alert(`Copy failed. Server IP: ${SERVER_IP}`);
-    }
-  };
-
-  const copyDiscordLink = async () => {
-    try {
-      await navigator.clipboard.writeText(DISCORD_URL);
-      alert("Discord invite copied!");
-    } catch {
-      alert(`Copy failed. Link: ${DISCORD_URL}`);
+      alert(text);
     }
   };
 
   return (
     <main className="text-white">
       {/* HERO */}
-      <section className="px-6 py-32 md:py-40 bg-gradient-to-b from-black/90 via-black/75 to-black/30">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-            <p className="text-sm md:text-base uppercase tracking-[0.3em] text-orange-300/80">
-              DayZ Community Server
-            </p>
+      <section className="bg-gradient-to-b from-black/90 via-black/75 to-black/30 px-6 py-28 md:py-36">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-orange-300/80">
+            DayZ Community Server
+          </p>
 
-            <h1 className="text-4xl md:text-6xl font-semibold tracking-wide text-orange-300 drop-shadow-lg">
-              {SERVER_NAME}
-            </h1>
+          <h1 className="mt-4 text-4xl font-semibold tracking-wide text-orange-300 drop-shadow-lg md:text-6xl">
+            {SERVER_NAME}
+          </h1>
 
-            <p className="text-lg md:text-2xl text-zinc-200 tracking-wide">
-              Vanilla+ • 1PP • EU • Weekend Raiding
-            </p>
+          <p className="mt-4 text-lg tracking-wide text-zinc-200 md:text-2xl">
+            Vanilla+ • 1PP • EU • Weekend Raiding
+          </p>
 
-            <p className="max-w-2xl mx-auto text-base md:text-lg text-zinc-400 leading-relaxed">
-              No safe zones. No handouts. Just DayZ, shaped by the people who
-              survive it.
-            </p>
-          </div>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 md:text-lg">
+            No safe zones. No handouts. Just DayZ, shaped by the people who
+            survive it.
+          </p>
 
-          {/* HERO BUTTONS */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={copyServerIP}
-              className="w-full sm:w-auto rounded-2xl bg-orange-400 px-6 py-3 text-black font-semibold transition hover:bg-orange-300"
-            >
-              Copy Server IP
-            </button>
-
-            <a
-              href="/how-to-join"
-              className="w-full sm:w-auto rounded-2xl border border-zinc-600 bg-black/30 px-6 py-3 text-white font-medium transition hover:border-zinc-400 hover:bg-white/5"
-            >
-              How to Join
-            </a>
-
-            <button
-              onClick={copyDiscordLink}
-              className="w-full sm:w-auto rounded-2xl border border-zinc-600 bg-black/30 px-6 py-3 text-white font-medium transition hover:border-zinc-400 hover:bg-white/5"
-            >
-              Copy Discord Link
-            </button>
-
+          {/* PRIMARY CTA AREA */}
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto rounded-2xl bg-indigo-500 px-6 py-3 text-white font-semibold transition hover:bg-indigo-400"
+              className="w-full rounded-2xl bg-orange-400 px-6 py-3 text-center font-semibold text-black transition hover:bg-orange-300 sm:w-auto"
             >
-              Open Discord
+              Join the Discord
+            </a>
+
+            <a
+              href="/how-to-join"
+              className="w-full rounded-2xl border border-zinc-600 bg-black/30 px-6 py-3 text-center font-medium text-white transition hover:border-zinc-400 hover:bg-white/5 sm:w-auto"
+            >
+              How to Join
             </a>
           </div>
 
-          <div className="pt-4 text-sm text-zinc-500">
-            <p>
+          {/* SERVER INFO */}
+          <div className="mx-auto mt-8 flex max-w-xl flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 sm:flex-row">
+            <div className="text-sm text-zinc-400">
               Direct connect:{" "}
-              <span className="font-medium text-zinc-300">{SERVER_IP}</span>
-            </p>
+              <span className="font-medium text-zinc-200">{SERVER_IP}</span>
+            </div>
+
+            <button
+              onClick={() =>
+                copyToClipboard(SERVER_IP, `Server IP copied: ${SERVER_IP}`)
+              }
+              className="rounded-xl border border-zinc-600 px-4 py-2 text-sm font-medium text-white transition hover:border-zinc-400 hover:bg-white/5"
+            >
+              Copy IP
+            </button>
           </div>
         </div>
       </section>
 
       {/* QUICK INFO */}
-      <section className="px-6 py-16 border-t border-white/5 border-b border-white/5 bg-black/30">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+      <section className="border-y border-white/5 bg-black/30 px-6 py-16">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
           {[
             { label: "Perspective", value: "1PP" },
             { label: "Style", value: "Vanilla+" },
@@ -114,40 +99,35 @@ export default function Home() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="px-6 pb-24">
-        <div className="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-white/5 p-8 md:p-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">
-            Ready to Join?
+      <section className="px-6 pb-24 pt-20">
+        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/5 p-8 text-center md:p-12">
+          <h2 className="text-3xl font-semibold text-white md:text-4xl">
+            Ready to Survive?
           </h2>
 
-          <p className="mt-4 text-zinc-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Step into a server where your choices matter and every encounter has
-            weight.
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 md:text-lg">
+            Join the community, get the server details, and step into a version
+            of DayZ where every decision matters.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={copyServerIP}
-              className="w-full sm:w-auto rounded-2xl bg-orange-400 px-6 py-3 text-black font-semibold transition hover:bg-orange-300"
-            >
-              Copy Server IP
-            </button>
-
-            <button
-              onClick={copyDiscordLink}
-              className="w-full sm:w-auto rounded-2xl border border-zinc-600 bg-black/30 px-6 py-3 text-white font-medium transition hover:border-zinc-400 hover:bg-white/5"
-            >
-              Copy Discord Link
-            </button>
-
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto rounded-2xl bg-indigo-500 px-6 py-3 text-white font-semibold transition hover:bg-indigo-400"
+              className="w-full rounded-2xl bg-indigo-500 px-6 py-3 text-center font-semibold text-white transition hover:bg-indigo-400 sm:w-auto"
             >
               Open Discord
             </a>
+
+            <button
+              onClick={() =>
+                copyToClipboard(SERVER_IP, `Server IP copied: ${SERVER_IP}`)
+              }
+              className="w-full rounded-2xl border border-zinc-600 bg-black/30 px-6 py-3 font-medium text-white transition hover:border-zinc-400 hover:bg-white/5 sm:w-auto"
+            >
+              Copy Server IP
+            </button>
           </div>
         </div>
       </section>
