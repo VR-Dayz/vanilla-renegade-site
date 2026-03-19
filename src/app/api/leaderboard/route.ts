@@ -8,12 +8,11 @@ export async function GET() {
 
   if (!apiKey || !serverId) {
     return NextResponse.json(
-      { error: "Missing CF Tools environment variables" },
+      { error: "Missing CFTOOLS_API_KEY or CFTOOLS_SERVER_ID" },
       { status: 500 }
     );
   }
 
-  // ✅ FIXED DOMAIN HERE
   const url = `https://data.cftools.cloud/v1/server/${serverId}/leaderboard`;
 
   try {
